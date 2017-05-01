@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mainframe98"
+		]
+	},
+	"orphanedtalkpages": "The name of the extension's entry in Special:SpecialPages",
+	"orphanedtalkpages-desc": "{{desc}}",
+	"orphanedtalkpages-extensionname": "Localized extension name",
+	"orphanedtalkpages-text": "Description appearing on top of Special:OrphanedTalkPages."
+}

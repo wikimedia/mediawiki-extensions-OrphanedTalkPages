@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mainframe98"
+		]
+	},
+	"orphanedtalkpages": "Orphaned talk pages",
+	"orphanedtalkpages-desc": "Provides a list of orphaned talk pages.",
+	"orphanedtalkpages-extensionname": "Orphaned Talk Pages",
+	"orphanedtalkpages-text": "The following talk pages do not have an accompanying page."
+}
