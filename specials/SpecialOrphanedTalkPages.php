@@ -30,23 +30,18 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 	public function getQueryInfo() {
 		global $wgOrphanedTalkPagesExemptedNamespaces, $wgOrphanedTalkPagesIgnoreUserTalk;
 
-		// Check if the configuration global is not empty and an array
-		if ( empty( $wgOrphanedTalkPagesExemptedNamespaces ) ||
-		     !is_array( $wgOrphanedTalkPagesExemptedNamespaces ) ) {
+		$exemptedNamespaces = [];
 
-			// Check if it is an int if it isn't an array so single values still work
-			if ( is_int( $wgOrphanedTalkPagesExemptedNamespaces ) ) {
-				$wgOrphanedTalkPagesExemptedNamespaces = [
-					$wgOrphanedTalkPagesExemptedNamespaces
-				];
-			} else {
-				$wgOrphanedTalkPagesExemptedNamespaces = [];
-			}
+		// Check if the configuration global is an integer, so single values still work
+		if ( is_int( $wgOrphanedTalkPagesExemptedNamespaces ) ) {
+			$exemptedNamespaces[] = $wgOrphanedTalkPagesExemptedNamespaces;
+		} elseif ( is_array( $wgOrphanedTalkPagesExemptedNamespaces ) ) {
+			$exemptedNamespaces = $wgOrphanedTalkPagesExemptedNamespaces;
 		}
 
-		// Check if the User talk namespace should be ignored.
+		// Check if the User talk namespace should be ignored
 		if ( $wgOrphanedTalkPagesIgnoreUserTalk === true ) {
-			$wgOrphanedTalkPagesExemptedNamespaces[] = NS_USER_TALK;
+			$exemptedNamespaces[] = NS_USER_TALK;
 		}
 
 		$query = [
@@ -62,16 +57,13 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 			]
 		];
 
-		// Check if the configuration variable is still empty
-		if ( !empty( $wgOrphanedTalkPagesExemptedNamespaces ) ) {
-			// Loop through the exempted namespaces
-			foreach ( $wgOrphanedTalkPagesExemptedNamespaces as $namespace ) {
-				// Skip through non-numeric values
-				if ( !is_numeric( $namespace ) ) {
-					continue;
-				}
-				$query['conds'][] = "p1.page_namespace != $namespace";
+		// Loop through the exempted namespaces
+		foreach ( $exemptedNamespaces as $namespace ) {
+			// Skip through non-integer values
+			if ( !is_int( $namespace ) ) {
+				continue;
 			}
+			$query['conds'][] = "p1.page_namespace != $namespace";
 		}
 
 		// Add the final condition
