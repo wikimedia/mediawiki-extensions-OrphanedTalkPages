@@ -4,5 +4,7 @@
 			"Aftabuzzaman"
 		]
 	},
-	"orphanedtalkpages": "পিতৃহীন আলাপ পাতা"
+	"orphanedtalkpages": "পিতৃহীন আলাপ পাতা",
+	"orphanedtalkpages-desc": "পিতৃহীন আলাপ পাতাগুলির একটি তালিকা প্রদান করে",
+	"orphanedtalkpages-text": "নিম্নলিখিত আলোচনা পাতাগুলি একটি সহচারী পৃষ্ঠা নেই।"
 }
