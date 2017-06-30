@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"MarcoAurelio"
+		]
+	},
+	"orphanedtalkpages": "Páginas de discusión huérfanas",
+	"orphanedtalkpages-desc": "Proporciona una lista de las páginas de discusión huérfanas",
+	"orphanedtalkpages-extensionname": "Páginas de discusión huérfanas",
+	"orphanedtalkpages-text": "Las siguientes páginas de discusión no tienen una página principal que las acompañe."
+}
