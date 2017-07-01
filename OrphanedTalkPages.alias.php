@@ -1,11 +1,6 @@
 <?php
 /**
- * Aliases for NamespaceManager
- *
- * Created by PhpStorm.
- * User: kswer
- * Date: 26-4-2017
- * Time: 16:17
+ * Aliases for OrphanedTalkPages
  */
 
 $specialPageAliases = [];

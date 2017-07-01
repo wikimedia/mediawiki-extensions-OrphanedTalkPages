@@ -40,7 +40,7 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 		}
 
 		// Check if the User talk namespace should be ignored
-		if ( $wgOrphanedTalkPagesIgnoreUserTalk === true ) {
+		if ( $wgOrphanedTalkPagesIgnoreUserTalk ) {
 			$exemptedNamespaces[] = NS_USER_TALK;
 		}
 
@@ -48,12 +48,12 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 			'tables' => 'page AS p1',
 			'fields' => [
 				'namespace' => 'p1.page_namespace',
-				'title' =>'p1.page_title',
+				'title' => 'p1.page_title',
 			    'value' => 'page_title' // Sorting
 			],
 			'conds' => [
 				'p1.page_title NOT LIKE "%/%"',
-			    'p1.page_namespace % 2 != 0'
+				'p1.page_namespace % 2 != 0'
 			]
 		];
 
