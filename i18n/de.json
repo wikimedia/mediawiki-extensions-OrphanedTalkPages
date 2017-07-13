@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64"
+			"Metalhead64",
+			"Kghbln"
 		]
 	},
 	"orphanedtalkpages": "Verwaiste Diskussionsseiten",
-	"orphanedtalkpages-desc": "Stellt eine Liste mit verwaisten Diskussionsseiten zur Verfügung",
-	"orphanedtalkpages-text": "Die folgenden Diskussionsseiten haben keine dazugehörige Seite."
+	"orphanedtalkpages-desc": "Stellt eine Liste verwaister Diskussionsseiten zur Verfügung",
+	"orphanedtalkpages-text": "Die folgenden Diskussionsseiten haben keine zugehörige Seite."
 }
