@@ -1,6 +1,6 @@
 {
 	"name": "OrphanedTalkPages",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"author": [
 		"Mainframe98"
 	],
@@ -10,7 +10,8 @@
 	"license-name": "MIT",
 	"type": "specialpage",
 	"AutoloadClasses": {
-		"SpecialOrphanedTalkPages": "specials/SpecialOrphanedTalkPages.php"
+		"SpecialOrphanedTalkPages": "specials/SpecialOrphanedTalkPages.php",
+		"OrphanedTalkPagesHooks": "OrphanedTalkPagesHooks.php"
 	},
 	"MessagesDirs": {
 		"OrphanedTalkPages": [
@@ -22,6 +23,11 @@
 	},
 	"SpecialPages": {
 		"OrphanedTalkPages": "SpecialOrphanedTalkPages"
+	},
+	"Hooks": {
+		"wgQueryPages": [
+			"OrphanedTalkPagesHooks::onwgQueryPages"
+		]
 	},
 	"config": {
 		"OrphanedTalkPagesExemptedNamespaces": [],
