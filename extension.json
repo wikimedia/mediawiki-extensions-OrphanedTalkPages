@@ -1,6 +1,6 @@
 {
 	"name": "OrphanedTalkPages",
-	"version": "1.1.2",
+	"version": "1.2.2",
 	"author": [
 		"Mainframe98"
 	],
@@ -10,8 +10,8 @@
 	"license-name": "MIT",
 	"type": "specialpage",
 	"AutoloadClasses": {
-		"SpecialOrphanedTalkPages": "includes/specials/SpecialOrphanedTalkPages.php",
-		"OrphanedTalkPagesHooks": "includes/OrphanedTalkPagesHooks.php"
+		"MediaWiki\\Extensions\\OrphanedTalkPages\\Specials\\SpecialOrphanedTalkPages": "includes/specials/SpecialOrphanedTalkPages.php",
+		"MediaWiki\\Extensions\\OrphanedTalkPages\\OrphanedTalkPagesHooks": "includes/OrphanedTalkPagesHooks.php"
 	},
 	"MessagesDirs": {
 		"OrphanedTalkPages": [
@@ -22,11 +22,11 @@
 		"OrphanedTalkPagesAlias": "OrphanedTalkPages.alias.php"
 	},
 	"SpecialPages": {
-		"OrphanedTalkPages": "SpecialOrphanedTalkPages"
+		"OrphanedTalkPages": "MediaWiki\\Extensions\\OrphanedTalkPages\\Specials\\SpecialOrphanedTalkPages"
 	},
 	"Hooks": {
 		"wgQueryPages": [
-			"OrphanedTalkPagesHooks::onwgQueryPages"
+			"MediaWiki\\Extensions\\OrphanedTalkPages\\OrphanedTalkPagesHooks::onwgQueryPages"
 		]
 	},
 	"config": {

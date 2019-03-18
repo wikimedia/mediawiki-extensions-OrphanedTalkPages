@@ -1,5 +1,9 @@
 <?php
 
+namespace MediaWiki\Extensions\OrphanedTalkPages\Specials;
+
+use PageQueryPage;
+
 class SpecialOrphanedTalkPages extends PageQueryPage {
 	public function __construct() {
 		parent::__construct( 'OrphanedTalkPages' );
