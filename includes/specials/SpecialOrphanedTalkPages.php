@@ -90,12 +90,14 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 		}
 
 		$query = [
-			'tables' => 'page AS p1',
+			'tables' => [
+				'p1' => 'page'
+			],
 			'fields' => [
 				'namespace' => 'p1.page_namespace',
 				'title' => 'p1.page_title',
 				// Sorting
-				'value' => 'page_title'
+				'value' => 'p1.page_title'
 			],
 			'conds' => [
 				'p1.page_title NOT LIKE "%/%"',
@@ -112,8 +114,17 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 			$query['conds'][] = "p1.page_namespace != $namespace";
 		}
 
+		$subQuery = $this->getRecacheDB()->selectSQLText(
+			[ 'p2' => 'page' ],
+			'1',
+			[
+				'p2.page_namespace = p1.page_namespace - 1',
+				'p1.page_title = p2.page_title'
+			]
+		);
+
 		// Add the final condition
-		$query['conds'][] = 'NOT EXISTS (SELECT 1 FROM page AS p2 WHERE p2.page_namespace = p1.page_namespace - 1 AND p1.page_title = p2.page_title)';
+		$query['conds'][] = "NOT EXISTS ($subQuery)";
 
 		return $query;
 	}
