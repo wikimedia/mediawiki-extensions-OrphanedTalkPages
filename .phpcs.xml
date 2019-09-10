@@ -4,21 +4,5 @@
 	<arg name="bootstrap" value="./vendor/mediawiki/mediawiki-codesniffer/utils/bootstrap-ci.php"/>
 	<arg name="extensions" value="php"/>
 	<arg name="encoding" value="UTF-8"/>
-	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
-		<exclude name="Generic.Files.LineLength.TooLong" />
-	</rule>
-	<rule ref="MediaWiki.NamingConventions.ValidGlobalName">
-		<properties>
-			<property name="ignoreList" type="array" value="$IP" />
-		</properties>
-	</rule>
-	<rule ref="Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore">
-		<exclude-pattern>tests</exclude-pattern>
-	</rule>
-	<rule ref="MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName">
-		<exclude-pattern>tests</exclude-pattern>
-	</rule>
-	<rule ref="MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName">
-		<exclude-pattern>includes/Hooks.php</exclude-pattern>
-	</rule>
+	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki" />
 </ruleset>
