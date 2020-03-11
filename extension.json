@@ -25,9 +25,7 @@
 		"OrphanedTalkPages": "MediaWiki\\Extensions\\OrphanedTalkPages\\Specials\\SpecialOrphanedTalkPages"
 	},
 	"Hooks": {
-		"wgQueryPages": [
-			"MediaWiki\\Extensions\\OrphanedTalkPages\\OrphanedTalkPagesHooks::onwgQueryPages"
-		]
+		"wgQueryPages": "MediaWiki\\Extensions\\OrphanedTalkPages\\OrphanedTalkPagesHooks::onwgQueryPages"
 	},
 	"config": {
 		"OrphanedTalkPagesExemptedNamespaces": [],
