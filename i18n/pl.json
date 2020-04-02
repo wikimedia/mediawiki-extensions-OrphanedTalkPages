@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Ostrzyciel"
 		]
 	},
-	"orphanedtalkpages": "Osierocone strony dyskusji"
+	"orphanedtalkpages": "Osierocone strony dyskusji",
+	"orphanedtalkpages-desc": "Pokazuje listę osieroconych stron dyskusji",
+	"orphanedtalkpages-text": "Poniższe strony dyskusji nie mają odpowiadających im stron."
 }
