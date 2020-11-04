@@ -1,6 +1,6 @@
 {
 	"name": "OrphanedTalkPages",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"author": [
 		"Mainframe98"
 	],
@@ -24,8 +24,16 @@
 	"ExtensionMessagesFiles": {
 		"OrphanedTalkPagesAlias": "OrphanedTalkPages.alias.php"
 	},
+	"ConfigRegistry": {
+		"OrphanedTalkPages": "GlobalVarConfig::newInstance"
+	},
 	"SpecialPages": {
-		"OrphanedTalkPages": "MediaWiki\\Extensions\\OrphanedTalkPages\\Specials\\SpecialOrphanedTalkPages"
+		"OrphanedTalkPages": {
+			"class": "MediaWiki\\Extensions\\OrphanedTalkPages\\Specials\\SpecialOrphanedTalkPages",
+			"services": [
+				"ConfigFactory"
+			]
+		}
 	},
 	"HookHandlers": {
 		"main": {

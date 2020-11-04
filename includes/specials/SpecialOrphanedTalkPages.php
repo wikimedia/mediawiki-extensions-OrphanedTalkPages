@@ -2,11 +2,23 @@
 
 namespace MediaWiki\Extensions\OrphanedTalkPages\Specials;
 
+use Config;
+use ConfigFactory;
 use PageQueryPage;
 
 class SpecialOrphanedTalkPages extends PageQueryPage {
-	public function __construct() {
+	/**
+	 * @var Config
+	 */
+	private $config;
+
+	/**
+	 * @param ConfigFactory $configFactory
+	 */
+	public function __construct( ConfigFactory $configFactory ) {
 		parent::__construct( 'OrphanedTalkPages' );
+
+		$this->config = $configFactory->makeConfig( 'OrphanedTalkPages' );
 	}
 
 	/**
@@ -73,19 +85,11 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 	 * @return array
 	 */
 	public function getQueryInfo() : array {
-		global $wgOrphanedTalkPagesExemptedNamespaces, $wgOrphanedTalkPagesIgnoreUserTalk;
-
-		$exemptedNamespaces = [];
-
-		// Check if the configuration global is an integer, so single values still work
-		if ( is_int( $wgOrphanedTalkPagesExemptedNamespaces ) ) {
-			$exemptedNamespaces[] = $wgOrphanedTalkPagesExemptedNamespaces;
-		} elseif ( is_array( $wgOrphanedTalkPagesExemptedNamespaces ) ) {
-			$exemptedNamespaces = $wgOrphanedTalkPagesExemptedNamespaces;
-		}
+		// $wgOrphanedTalkPagesExemptedNamespaces might be an integer.
+		$exemptedNamespaces = (array)$this->config->get( 'OrphanedTalkPagesExemptedNamespaces' );
 
 		// Check if the User talk namespace should be ignored
-		if ( $wgOrphanedTalkPagesIgnoreUserTalk ) {
+		if ( $this->config->get( 'OrphanedTalkPagesIgnoreUserTalk' ) ) {
 			$exemptedNamespaces[] = NS_USER_TALK;
 		}
 
