@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Verdy p",
 			"Wladek92"
 		]
 	},
 	"orphanedtalkpages": "Pages de discussion orphelines",
 	"orphanedtalkpages-desc": "Affiche une liste des pages de discussion orphelines",
+	"orphanedtalkpages-extensionname": "Orphaned Talk Pages",
 	"orphanedtalkpages-text": "Les pages de discussion suivantes n'ont pas de page annexe."
 }
