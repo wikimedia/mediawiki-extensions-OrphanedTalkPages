@@ -14,7 +14,7 @@ class OrphanedTalkPagesHooks implements WgQueryPagesHook {
 	 *
 	 * @param array &$qp
 	 */
-	public function onwgQueryPages( &$qp ) : void {
+	public function onwgQueryPages( &$qp ): void {
 		$qp[] = [ SpecialOrphanedTalkPages::class, 'OrphanedTalkPages' ];
 	}
 }

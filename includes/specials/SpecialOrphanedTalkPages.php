@@ -84,7 +84,7 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 	 * compatibility only and is strongly deprecated.
 	 * @return array
 	 */
-	public function getQueryInfo() : array {
+	public function getQueryInfo(): array {
 		// $wgOrphanedTalkPagesExemptedNamespaces might be an integer.
 		$exemptedNamespaces = (array)$this->config->get( 'OrphanedTalkPagesExemptedNamespaces' );
 
