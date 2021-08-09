@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"DDPAT",
 			"Piramidion"
 		]
 	},
 	"orphanedtalkpages": "Сторінки обговорення — сироти",
 	"orphanedtalkpages-desc": "Надає список сторінок обговорення, які є сиротами",
+	"orphanedtalkpages-extensionname": "Сирітські сторінки розмов",
 	"orphanedtalkpages-text": "Такі сторінки обговорення не мають супровідної сторінки."
 }
