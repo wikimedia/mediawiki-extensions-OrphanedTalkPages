@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kkairri"
+		]
+	},
+	"orphanedtalkpages": "孤立したトークページ",
+	"orphanedtalkpages-desc": "孤立したトークページの一覧を示します",
+	"orphanedtalkpages-extensionname": "孤立したトークページ",
+	"orphanedtalkpages-text": "以下のトークページは、付随するページが存在しません。"
+}
