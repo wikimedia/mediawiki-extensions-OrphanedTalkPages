@@ -12,9 +12,8 @@
 	"requires": {
 		"MediaWiki": ">=1.35.0"
 	},
-	"AutoloadClasses": {
-		"MediaWiki\\Extension\\OrphanedTalkPages\\Specials\\SpecialOrphanedTalkPages": "includes/specials/SpecialOrphanedTalkPages.php",
-		"MediaWiki\\Extension\\OrphanedTalkPages\\OrphanedTalkPagesHooks": "includes/OrphanedTalkPagesHooks.php"
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\OrphanedTalkPages\\": "src/"
 	},
 	"MessagesDirs": {
 		"OrphanedTalkPages": [
