@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extensions\OrphanedTalkPages\Specials;
+namespace MediaWiki\Extension\OrphanedTalkPages\Specials;
 
 use Config;
 use ConfigFactory;

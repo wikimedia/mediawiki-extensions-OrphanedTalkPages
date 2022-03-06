@@ -13,8 +13,8 @@
 		"MediaWiki": ">=1.35.0"
 	},
 	"AutoloadClasses": {
-		"MediaWiki\\Extensions\\OrphanedTalkPages\\Specials\\SpecialOrphanedTalkPages": "includes/specials/SpecialOrphanedTalkPages.php",
-		"MediaWiki\\Extensions\\OrphanedTalkPages\\OrphanedTalkPagesHooks": "includes/OrphanedTalkPagesHooks.php"
+		"MediaWiki\\Extension\\OrphanedTalkPages\\Specials\\SpecialOrphanedTalkPages": "includes/specials/SpecialOrphanedTalkPages.php",
+		"MediaWiki\\Extension\\OrphanedTalkPages\\OrphanedTalkPagesHooks": "includes/OrphanedTalkPagesHooks.php"
 	},
 	"MessagesDirs": {
 		"OrphanedTalkPages": [
@@ -29,7 +29,7 @@
 	},
 	"SpecialPages": {
 		"OrphanedTalkPages": {
-			"class": "MediaWiki\\Extensions\\OrphanedTalkPages\\Specials\\SpecialOrphanedTalkPages",
+			"class": "MediaWiki\\Extension\\OrphanedTalkPages\\Specials\\SpecialOrphanedTalkPages",
 			"services": [
 				"ConfigFactory"
 			]
@@ -37,7 +37,7 @@
 	},
 	"HookHandlers": {
 		"main": {
-			"class": "MediaWiki\\Extensions\\OrphanedTalkPages\\OrphanedTalkPagesHooks"
+			"class": "MediaWiki\\Extension\\OrphanedTalkPages\\OrphanedTalkPagesHooks"
 		}
 	},
 	"Hooks": {

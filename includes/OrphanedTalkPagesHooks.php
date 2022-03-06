@@ -1,8 +1,8 @@
 <?php
 
-namespace MediaWiki\Extensions\OrphanedTalkPages;
+namespace MediaWiki\Extension\OrphanedTalkPages;
 
-use MediaWiki\Extensions\OrphanedTalkPages\Specials\SpecialOrphanedTalkPages;
+use MediaWiki\Extension\OrphanedTalkPages\Specials\SpecialOrphanedTalkPages;
 use MediaWiki\SpecialPage\Hook\WgQueryPagesHook;
 
 class OrphanedTalkPagesHooks implements WgQueryPagesHook {
