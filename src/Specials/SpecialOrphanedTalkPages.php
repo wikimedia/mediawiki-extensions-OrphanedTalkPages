@@ -7,10 +7,7 @@ use ConfigFactory;
 use PageQueryPage;
 
 class SpecialOrphanedTalkPages extends PageQueryPage {
-	/**
-	 * @var Config
-	 */
-	private $config;
+	private Config $config;
 
 	/**
 	 * @param ConfigFactory $configFactory
@@ -21,69 +18,31 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 		$this->config = $configFactory->makeConfig( 'OrphanedTalkPages' );
 	}
 
-	/**
-	 * The content returned by this function is output before any result.
-	 *
-	 * @return string
-	 */
-	public function getPageHeader() {
+	/** @inheritDoc */
+	public function getPageHeader(): string {
 		return $this->msg( 'orphanedtalkpages-text' )->parseAsBlock();
 	}
 
 	/**
 	 * Overridden to prevent sorting by increasing values.
 	 *
-	 * @return bool
+	 * @return false
 	 */
-	public function sortDescending() {
+	public function sortDescending(): bool {
 		return false;
 	}
 
-	/**
-	 * Is this query expensive? Then we
-	 * don't let it run in miser mode. $wgDisableQueryPages causes all query
-	 * pages to be declared expensive. Some query pages are always expensive.
-	 *
-	 * @return bool
-	 */
-	public function isExpensive() {
+	/** @inheritDoc */
+	public function isExpensive(): bool {
 		return true;
 	}
 
-	/**
-	 * Sometime we don't want to build rss / atom feeds.
-	 *
-	 * @return bool
-	 */
-	public function isSyndicated() {
+	/** @inheritDoc */
+	public function isSyndicated(): bool {
 		return false;
 	}
 
-	/**
-	 * Subclasses return an SQL query here, formatted as an array with the
-	 * following keys:
-	 *    tables => Table(s) for passing to Database::select()
-	 *    fields => Field(s) for passing to Database::select(), may be *
-	 *    conds => WHERE conditions
-	 *    options => options
-	 *    join_conds => JOIN conditions
-	 *
-	 * Note that the query itself should return the following three columns:
-	 * 'namespace', 'title', and 'value'. 'value' is used for sorting.
-	 *
-	 * These may be stored in the querycache table for expensive queries,
-	 * and that cached data will be returned sometimes, so the presence of
-	 * extra fields can't be relied upon. The cached 'value' column will be
-	 * an integer; non-numeric values are useful only for sorting the
-	 * initial query (except if they're timestamps, see usesTimestamps()).
-	 *
-	 * Don't include an ORDER or LIMIT clause, they will be added.
-	 *
-	 * If this function is not overridden or returns something other than
-	 * an array, getSQL() will be used instead. This is for backwards
-	 * compatibility only and is strongly deprecated.
-	 * @return array
-	 */
+	/** @inheritDoc */
 	public function getQueryInfo(): array {
 		// $wgOrphanedTalkPagesExemptedNamespaces might be an integer.
 		$exemptedNamespaces = (array)$this->config->get( 'OrphanedTalkPagesExemptedNamespaces' );
@@ -118,14 +77,15 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 			$query['conds'][] = "p1.page_namespace != $namespace";
 		}
 
-		$subQuery = $this->getRecacheDB()->selectSQLText(
-			[ 'p2' => 'page' ],
-			'1',
-			[
+		$subQuery = $this->getRecacheDB()->newSelectQueryBuilder()
+			->from( 'page', 'p2' )
+			->field( '1' )
+			->where( [
 				'p2.page_namespace = p1.page_namespace - 1',
 				'p1.page_title = p2.page_title'
-			]
-		);
+			] )
+			->caller( __METHOD__ )
+			->getSQL();
 
 		// Add the final condition
 		$query['conds'][] = "NOT EXISTS ($subQuery)";
@@ -133,12 +93,8 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 		return $query;
 	}
 
-	/**
-	 * Under which header this special page is listed in Special:SpecialPages.
-	 *
-	 * @return string
-	 */
-	protected function getGroupName() {
+	/** @inheritDoc */
+	protected function getGroupName(): string {
 		return 'maintenance';
 	}
 }
