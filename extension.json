@@ -24,7 +24,7 @@
 		"OrphanedTalkPagesAlias": "OrphanedTalkPages.alias.php"
 	},
 	"ConfigRegistry": {
-		"OrphanedTalkPages": "GlobalVarConfig::newInstance"
+		"OrphanedTalkPages": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
 	"SpecialPages": {
 		"OrphanedTalkPages": {
