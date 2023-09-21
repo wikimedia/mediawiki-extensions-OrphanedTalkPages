@@ -2,9 +2,10 @@
 
 namespace MediaWiki\Extension\OrphanedTalkPages\Specials;
 
-use Config;
-use ConfigFactory;
-use PageQueryPage;
+use MediaWiki\Config\Config;
+use MediaWiki\Config\ConfigFactory;
+use MediaWiki\SpecialPage\PageQueryPage;
+use Wikimedia\Rdbms\Subquery;
 
 class SpecialOrphanedTalkPages extends PageQueryPage {
 	private Config $config;
@@ -52,21 +53,19 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 			$exemptedNamespaces[] = NS_USER_TALK;
 		}
 
-		$query = [
-			'tables' => [
-				'p1' => 'page'
-			],
-			'fields' => [
+		$dbr = $this->getDatabaseProvider()->getReplicaDatabase();
+		$queryBuilder = $dbr->newSelectQueryBuilder()
+			->select( [
 				'namespace' => 'p1.page_namespace',
 				'title' => 'p1.page_title',
 				// Sorting
 				'value' => 'p1.page_title'
-			],
-			'conds' => [
-				'p1.page_title NOT LIKE "%/%"',
+			] )
+			->from( 'page', 'p1' )
+			->where( [
+				'p1.page_title NOT' . $dbr->buildLike( $dbr->anyString(), '/', $dbr->anyString() ),
 				'p1.page_namespace % 2 != 0'
-			]
-		];
+			] );
 
 		// Loop through the exempted namespaces
 		foreach ( $exemptedNamespaces as $namespace ) {
@@ -74,10 +73,10 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 			if ( !is_int( $namespace ) ) {
 				continue;
 			}
-			$query['conds'][] = "p1.page_namespace != $namespace";
+			$queryBuilder->andWhere( "p1.page_namespace != $namespace" );
 		}
 
-		$subQuery = $this->getRecacheDB()->newSelectQueryBuilder()
+		$subQuery = $queryBuilder->newSubquery()
 			->from( 'page', 'p2' )
 			->field( '1' )
 			->where( [
@@ -88,9 +87,9 @@ class SpecialOrphanedTalkPages extends PageQueryPage {
 			->getSQL();
 
 		// Add the final condition
-		$query['conds'][] = "NOT EXISTS ($subQuery)";
+		$queryBuilder->andWhere( 'NOT EXISTS ' . new Subquery( $subQuery ) );
 
-		return $query;
+		return $queryBuilder->getQueryInfo();
 	}
 
 	/** @inheritDoc */
