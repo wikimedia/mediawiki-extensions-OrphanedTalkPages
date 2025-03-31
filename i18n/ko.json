@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Tensama0415",
 			"Ykhwong"
 		]
 	},
 	"orphanedtalkpages": "외톨이 토론 문서",
-	"orphanedtalkpages-desc": "외톨이 토론 문서의 목록을 제공합니다"
+	"orphanedtalkpages-desc": "외톨이 토론 문서의 목록을 제공합니다",
+	"orphanedtalkpages-text": "다음 토론 문서들은 관련된 문서가 존재하지 않습니다."
 }
