@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
-	"orphanedtalkpages": "Verweest Diskussionssäiten"
+	"orphanedtalkpages": "Verweest Diskussiounssäiten",
+	"orphanedtalkpages-extensionname": "Verweest Diskussiounssäiten"
 }
