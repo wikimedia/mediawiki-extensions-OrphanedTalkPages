@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Stefan2255",
 			"WikiPhoenix"
 		]
 	},
-	"orphanedtalkpages": "Föräldralösa diskussionssidor"
+	"orphanedtalkpages": "Föräldralösa diskussionssidor",
+	"orphanedtalkpages-text": "Följande diskussionssidor har ingen tillhörande sida."
 }
