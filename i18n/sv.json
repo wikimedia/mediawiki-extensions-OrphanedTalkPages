@@ -6,5 +6,6 @@
 		]
 	},
 	"orphanedtalkpages": "Föräldralösa diskussionssidor",
+	"orphanedtalkpages-desc": "Ger en lista över övergivna diskussionssidor",
 	"orphanedtalkpages-text": "Följande diskussionssidor har ingen tillhörande sida."
 }
